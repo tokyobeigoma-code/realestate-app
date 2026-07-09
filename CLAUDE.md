@@ -2,17 +2,22 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project status
-
-This repository is currently empty — no code, framework, or build tooling has been added yet. The sections below (commands, architecture) are placeholders to be filled in as the project takes shape. Update this file as soon as a stack, build system, or test runner is chosen.
-
 ## Commands
 
-_Not yet defined. Add build / lint / test / dev-server commands here once the tech stack is chosen._
+- `npm install` — install dependencies
+- `npm run dev` — start the Vite dev server
+- `npm run build` — production build (outputs to `dist/`)
+- `npm run preview` — preview the production build locally
+
+No lint or test runner is configured yet.
 
 ## Architecture
 
-_Not yet defined. Add a high-level description of the system's structure here once code exists._
+- **Stack**: React + Vite, React Router (`react-router-dom`), Supabase (`@supabase/supabase-js`) for auth.
+- **Auth flow**: `src/context/AuthContext.jsx` wraps the app and exposes the current Supabase `session` via `useAuth()`, populated from `supabase.auth.getSession()` and kept in sync with `supabase.auth.onAuthStateChange`. `src/components/ProtectedRoute.jsx` reads that context and redirects to `/login` when there is no session.
+- **Routes** (`src/App.jsx`): `/login`, `/signup` (public), `/properties` (wrapped in `ProtectedRoute`, shows dummy property cards). Unknown paths redirect to `/properties`, which then bounces to `/login` if unauthenticated.
+- **Supabase client**: `src/supabaseClient.js` creates the client from `VITE_SUPABASE_URL` / `VITE_SUPABASE_PUBLISHABLE_KEY` env vars (see `.env.example`). Real values live in the untracked `.env`.
+- **Property data is currently hardcoded** in `src/pages/PropertyList.jsx` (no Supabase table/query behind it yet).
 
 ## Git workflow
 
