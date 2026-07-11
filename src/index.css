@@ -132,8 +132,88 @@ body {
 }
 
 .property-rent,
-.property-area {
+.property-area,
+.property-layout {
   margin: 0.25rem 0;
   color: #374151;
   font-size: 0.95rem;
+}
+
+.property-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.property-card-actions button {
+  padding: 0.4rem 0.9rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #2563eb;
+  color: #fff;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.property-card-actions button.danger {
+  background-color: #ef4444;
+}
+
+/* 物件登録・編集フォーム */
+.property-form-section {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+.property-form-section h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.property-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.property-form-row {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+}
+
+.property-form-row input {
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  width: 160px;
+}
+
+.property-form-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.property-form-actions button {
+  padding: 0.55rem 1.1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #2563eb;
+  color: #fff;
+  cursor: pointer;
+}
+
+.property-form-actions button[type='button'] {
+  background-color: #9ca3af;
+}
+
+.property-form-actions button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
 }
